@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+      "start": " node ./router/router.js",
+      "debug": "node --inspect-brk ./router/router.js"
+  },
   "dependencies": {
     "fastify": "^1.1.1",
     "mysql": "^2.15.0"

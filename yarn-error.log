@@ -1,0 +1,32 @@
+Arguments: 
+  D:\sf\nodejs\node.exe D:\sf\yarn\bin\yarn.js run start
+
+PATH: 
+  D:\sf\anaconda;D:\sf\anaconda\Library\mingw-w64\bin;D:\sf\anaconda\Library\usr\bin;D:\sf\anaconda\Library\bin;D:\sf\anaconda\Scripts;D:\sf\anaconda\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\sf\Git\cmd;D:\sf\nvm;D:\sf\nodejs;D:\sf\yarn\bin\;\bin;C:\Users\ym\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;D:\sf\nvm;D:\sf\nodejs;C:\Users\ym\AppData\Local\Yarn\bin;D:\sf\MicrosoftVSCode\bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.8.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "D:\\jupyter\\car-management"
+      at new MessageError (D:\sf\yarn\lib\cli.js:186:110)
+      at D:\sf\yarn\lib\cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (D:\sf\yarn\lib\cli.js:98:30)
+      at D:\sf\yarn\lib\cli.js:109:13
+      at <anonymous>
