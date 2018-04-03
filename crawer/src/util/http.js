@@ -1,22 +1,36 @@
 const http = require("http");
 const fs = require('fs');
+const { URL } = require('url');
 
-function request (data, url, method) {
-    return new Promise((resolve, reject) => {
-      const postData = JSON.stringify(data)
-      const options = {
-        hostname: 'localhost',
-        port: 9000,
-        path: url,
-        method: method,
-        headers: {
-          'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(postData)
+function request (data, url, host, port, method) {
+  
+    let postData = '';
+    if (!host) host = new URL(url).host;
+
+    function createOpts (data, url, host, port, method) {
+        const options = {
+            hostname: host,
+            port: port,
+            path: url,
+            method: method,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+
+        if (data) {
+            postData = Buffer.byteLength(postData);
+            options.headers['Content-Length'] = Buffer.byteLength(postData);
         }
-      };
+
+        return options;
+    }
+
+    return new Promise((resolve, reject) => {
+
+      const options = createOpts(data, url, host, port, method); 
       
       const req = http.request(options, (res) => {
-        console.log(`STATUS: ${res.statusCode}`);
         let chunks = []
         let headers = JSON.stringify(res.headers);
         
@@ -24,8 +38,8 @@ function request (data, url, method) {
           chunks.push(chunk);
         })
 
-        res.on('end', function () {
-          resolve({headers: headers, data: Buffer.from(chunks)});
+        res.on('end', async () => {
+          resolve({url: url, headers: headers, chunks: chunks});
         })
       });
       

@@ -20,7 +20,50 @@ const c = require("../util/constant.js");
 
 // 测试http
 const http = require('../util/http.js');
+const fs = require('fs');
+
+const imagePath = 'D:/jupyter/car-management/crawer/src/images';
+
+http(null, 'http://img.taopic.com/uploads/allimg/140320/235013-14032020515270.jpg' ,'img.taopic.com', 80, 'GET').then(res => {
+    const imageSuffix = res.url.split('/').pop();
+    const filename = imagePath + '/' + Date.now() + imageSuffix ;
+    const opts = {
+        flags: 'w',
+        encoding: 'utf8',
+        fd: null,
+        mode: 0o666,
+        autoClose: true
+      };
+    const stream = fs.createWriteStream(filename, opts);
+    
+    let chunks = res.chunks;
+
+    for (let i = 0; i < chunks.length; i++) {
+        stream.write(chunks[i], 'utf8', function (err) {
+            if (err) console.log(err);
+        });
+    }
+
+    stream.on('close', function () {
+        stream.end();
+    })
 
 
-const getUrl = require("../parser/httpRequestURL\.js") // 测试httpParser
-getUrl(c.URL)
+    stream.on('error', function (err) {
+        console.log(err);
+    })
+    stream.on('finish', () => {
+        stream.close();
+    })
+
+    // for (let i = 0; i < chunks.length; i++) {
+        
+    // }
+    // fs.writeFile(filename, res.chunks, function (err) {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    // })
+}).catch(err => {
+    console.log(err)
+})
