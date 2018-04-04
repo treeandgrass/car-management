@@ -17,14 +17,14 @@ const c = require("../util/constant.js");
 
 // h({urls: ["http", "url", "jjsdsd"]}, "/url/save", "POST")
 
-
+require('../start.js');
 // 测试http
 const http = require('../util/http.js');
 const fs = require('fs');
 
 const imagePath = 'D:/jupyter/car-management/crawer/src/images';
 
-http(null, 'http://img.taopic.com/uploads/allimg/140320/235013-14032020515270.jpg' ,'img.taopic.com', 80, 'GET').then(res => {
+/*http(null, 'http://img.taopic.com/uploads/allimg/140320/235013-14032020515270.jpg' ,'img.taopic.com', 80, 'GET').then(res => {
     const imageSuffix = res.url.split('/').pop();
     const filename = imagePath + '/' + Date.now() + imageSuffix ;
     const opts = {
@@ -55,15 +55,21 @@ http(null, 'http://img.taopic.com/uploads/allimg/140320/235013-14032020515270.jp
     stream.on('finish', () => {
         stream.close();
     })
-
-    // for (let i = 0; i < chunks.length; i++) {
-        
-    // }
-    // fs.writeFile(filename, res.chunks, function (err) {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    // })
 }).catch(err => {
     console.log(err)
-})
+})*/
+
+// const urlcurd = require('../db/urlcrud.js');
+
+// urlcurd.add(['http://example.com', "https://hello.com", "http://google.com"]);
+
+// urlcurd.query(0, 3).then(res => {
+//     console.log(res);
+//     process.exit();
+// })
+
+// urlcurd.del(['5ac4d01dcaf75911f080cfba']).then(res => {
+//     process.exit();
+// })
+
+

@@ -1,15 +1,24 @@
 const puppeteer = require("puppeteer");
-const c = require("../util/constant.js")
-const random = require("../util/random.js")
-const BloomFilter = new require("../util/bloomfilter.js").BloomFilter
-const request = require("../util/http.js")
+const c = require("../util/constant.js");
+const random = require("../util/random.js");
+const BloomFilter = new require("../util/bloomfilter.js").BloomFilter;
+const request = require("../util/http.js");
+const urlcrud = require('../db/urlcrud.js');
 
-const filter = new BloomFilter(512 * 1024, 16)
+
+const filter = new BloomFilter(512 * 1024, 16);
 
 // load data
 filter.load("b.txt", "l.txt")
+
+function wait () {
+    setTimeout(function () {
+
+    }, 10)
+}
+
 module.exports = function (_URL) {
-    puppeteer.launch().then( async browser => {
+    return puppeteer.launch().then( async browser => {
         const page = await browser.newPage();
     
         // count image url number
@@ -57,20 +66,23 @@ module.exports = function (_URL) {
             urls.forEach(url => {
                 if (!filter.test(url)) {
                     filter.add(url)
-                    postUrls.push({url})
+                    postUrls.push(url)
                 }
             })
+
             exceptImageNumber += postUrls.length
 
-            request({urls: postUrls}, "/url/save", "POST")
+            urlcrud.add(postUrls)
 
             console.log("total: " +totalUrl)
             console.log("exceptNumber: " + exceptImageNumber)
 
             if (exceptImageNumber < c.EXCEPTNUMBER) {
                 // arrowdown key
-                for (let i = 0; i < 10; i++) {
+                let keyMove = Math.floor(Math.random() * 5) + 1;
+                for (let i = 0; i < keyMove; i++) {
                     page.keyboard.down("ArrowDown")
+                    await wait();
                 }
                 setTimeout(parser, random())
             }  else {

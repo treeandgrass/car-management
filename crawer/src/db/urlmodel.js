@@ -7,7 +7,7 @@ const indexSchema = new Schema({
     url: String
 })
 
-mongoose.model('IndexModel', indexSchema)
+mongoose.model('URLModel', indexSchema)
 
 
 
