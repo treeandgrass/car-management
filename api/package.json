@@ -1,0 +1,13 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+      "start-r": "node  ./start.js recognition",
+      "start-r-test": "node --inspect-brk  ./start.js recognition"
+  },
+  "dependencies": {
+    "openalpr_api": "^2.0.1"
+  }
+}

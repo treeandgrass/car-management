@@ -4,12 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": " node ./router/router.js",
-    "debug": "node --inspect-brk ./router/router.js"
+    "start": " nodemon ./router/router.js",
+    "debug": "node --inspect-brk ./router/router.js",
+    "test": "mocha"
   },
   "dependencies": {
+    "cors": "^2.8.4",
     "fastify": "^1.1.1",
     "form-data": "^2.3.2",
+    "mocha": "^5.1.0",
     "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
   }
 }

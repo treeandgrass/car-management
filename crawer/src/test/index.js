@@ -24,7 +24,7 @@ const fs = require('fs');
 
 const imagePath = 'D:/jupyter/car-management/crawer/src/images';
 
-/*http(null, 'http://img.taopic.com/uploads/allimg/140320/235013-14032020515270.jpg' ,'img.taopic.com', 80, 'GET').then(res => {
+http(null, 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=623054485,857985843&fm=27&gp=0.jpg' ,'ss0.bdstatic.com', 443, 'GET').then(res => {
     const imageSuffix = res.url.split('/').pop();
     const filename = imagePath + '/' + Date.now() + imageSuffix ;
     const opts = {
@@ -57,7 +57,7 @@ const imagePath = 'D:/jupyter/car-management/crawer/src/images';
     })
 }).catch(err => {
     console.log(err)
-})*/
+})
 
 // const urlcurd = require('../db/urlcrud.js');
 
@@ -73,3 +73,4 @@ const imagePath = 'D:/jupyter/car-management/crawer/src/images';
 // })
 
 
+console.log(c.SAVEPATH);

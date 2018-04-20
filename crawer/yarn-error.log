@@ -1,14 +1,14 @@
 Arguments: 
-  D:\sf\nodejs\node.exe D:\sf\yarn\bin\yarn.js run test
+  D:\sf\nodejs\node.exe D:\sf\yarn\bin\yarn.js run start-down-image
 
 PATH: 
-  D:\sf\cmder\bin;D:\sf\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\sf\cmder\vendor\conemu-maximus5;D:\sf\cmder\vendor\conemu-maximus5\ConEmu;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\sf\nvm;D:\sf\nodejs;D:\sf\Git\cmd;D:\sf\cmder;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;D:\sf\yarn\bin\;D:\sf\cmake\bin;%OPENCV_DIR%\bin;;C:\Program Files\Microsoft VS Code\bin;D:\sf\MicrosoftVSCode\bin;D:\sf\Fiddler;C:\Users\ym\AppData\Roaming\npm;C:\Users\ym\AppData\Local\Yarn\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;D:\sf\Git\usr\bin;D:\sf\Git\usr\share\vim\vim74;D:\sf\cmder\
+  D:\sf\cmder\bin;D:\sf\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\sf\cmder\vendor\conemu-maximus5;D:\sf\cmder\vendor\conemu-maximus5\ConEmu;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\sf\nvm;D:\sf\nodejs;D:\sf\cmder;C:\Program Files\Git\cmd;D:\sf\yarn\bin\;D:\sf\python35\Scripts\;D:\sf\python35\;D:\sf\nvm;D:\sf\nodejs;D:\sf\DockerToolbox;D:\sf\MicrosoftVSCode\bin;C:\Users\ym\AppData\Local\Yarn\bin;C:\Users\ym\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;D:\sf\cmder\
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  9.8.0
+  8.11.1
 
 Platform: 
   win32 x64
@@ -23,11 +23,14 @@ npm manifest:
       "dev": "node ./src/start.js",
       "test": "node  ./src/test/index.js",
       "server": "runjs ./src/server/router/router.js",
-      "serverpro": "node ./src/server/router/router.js"
+      "serverpro": "node ./src/server/router/router.js",
+      "start-parse-url": "node  ./src/start.js url",
+      "start-down-image": "node  ./src/start.js image"
     },
     "dependencies": {
       "fastify": "^1.2.0",
       "mongoose": "^5.0.11",
+      "openalpr_api": "^2.0.1",
       "puppeteer": "^1.2.0",
       "redis": "^2.8.0",
       "run": "^1.4.0",
@@ -724,13 +727,14 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c node  ./src/test/index.js
-  Directory: D:\jupyter\node\crawer
+  Arguments: /d /s /c node  ./src/start.js image
+  Directory: d:\jupyter\car-management\crawer
   Output:
   
       at ProcessTermError.MessageError (D:\sf\yarn\lib\cli.js:186:110)
       at new ProcessTermError (D:\sf\yarn\lib\cli.js:226:113)
       at ChildProcess.<anonymous> (D:\sf\yarn\lib\cli.js:30281:17)
-      at ChildProcess.emit (events.js:180:13)
-      at maybeClose (internal/child_process.js:936:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

@@ -1,6 +1,7 @@
-const http = require("http");
+const https = require("https");
 const fs = require('fs');
 const { URL } = require('url');
+
 
 function request (data, url, host, port, method) {
   
@@ -14,7 +15,12 @@ function request (data, url, host, port, method) {
             path: url,
             method: method,
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+              "Accept-Encoding": "gzip,deflate,sdch",
+              "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6",
+              "Cache-Control": "max-age=0",
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
             }
         };
 
@@ -30,7 +36,7 @@ function request (data, url, host, port, method) {
 
       const options = createOpts(data, url, host, port, method); 
       
-      const req = http.request(options, (res) => {
+      const req = https.request(options, (res) => {
         let chunks = []
         let headers = JSON.stringify(res.headers);
         

@@ -1,5 +1,15 @@
 const fastify = require('fastify')()
 const { getServiceJsObject, getServiceJsObjectSync } = require('../utils/readFile.js')
+const cors = require('cors');
+
+
+// middleware
+fastify.use(cors({
+    origin: 'http://localhost:8080',
+    optionsSuccessStatus: 200,
+    credentials: true
+}));
+
 
 // load all service
 const dir = '../service' 
