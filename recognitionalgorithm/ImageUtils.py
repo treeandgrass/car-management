@@ -140,3 +140,19 @@ class ImageUtils:
         X = np.load(Xpath)
         Y = np.load(Ypath)
         return X, Y
+    
+    #读取index->chs
+    def readLabels(self, root, excelPath):
+        excelPath = os.path.join(root, excelPath)
+        df = read_excel(excelPath)
+        licenseChs = df.to_dict()['chs']
+        licenseChs = [ str(v) for k, v in licenseChs.items()]
+        return licenseChs
+    
+    #根据下标获取车牌
+    def getLabel(self, root, filename, y):
+        chs = self.readLabels(root, filename)
+        result = []
+        for i in range(len(y)):
+                result.append(chs[int(y[i])])
+        return ''.join(result)
